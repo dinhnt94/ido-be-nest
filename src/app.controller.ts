@@ -14,6 +14,6 @@ export class AppController {
   @Get('check/:id')
   getUserInWhiteList(@Param() params): string {
     console.log('getUserInWhiteList', params.id);
-    return this.appService.getSignature(params.id);
+    return this.appService.getUserInWhiteList(params.id);
   }
 }

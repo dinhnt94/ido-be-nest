@@ -47,7 +47,7 @@ export class MerkleTreeSupport {
         try {
             // get index of userAddress
             const indexAdd = this.whiteList.indexOf(userAdd);
-            console.log(indexAdd, this.leafNodes);
+            // console.log(indexAdd, this.leafNodes);
             if ( indexAdd == -1 ) return [];
 
             // ✅ Positive verification of address
@@ -59,7 +59,7 @@ export class MerkleTreeSupport {
             // `getHexProof` returns the neighbour leaf and all parent nodes hashes that will
             // be required to derive the Merkle Trees root hash.
             const hexProof = this.merkleTree.getHexProof(claimingAddress);
-            console.log(hexProof);
+            console.log(typeof (hexProof), hexProof.values());
 
             // ✅ - ❌: Verify is claiming address is in the merkle tree or not.
             // This would be implemented in your Solidity Smart Contract
