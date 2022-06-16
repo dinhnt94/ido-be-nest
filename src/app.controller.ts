@@ -7,7 +7,13 @@ export class AppController {
 
   @Get(':id')
   getSignature(@Param() params): string {
-    console.log(params.id);
+    console.log('getSignature', params.id);
+    return this.appService.getSignature(params.id);
+  }
+
+  @Get('check/:id')
+  getUserInWhiteList(@Param() params): string {
+    console.log('getUserInWhiteList', params.id);
     return this.appService.getSignature(params.id);
   }
 }
