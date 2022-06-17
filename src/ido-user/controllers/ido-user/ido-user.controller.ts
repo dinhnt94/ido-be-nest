@@ -20,7 +20,9 @@ export class IdoUserController {
 
     @Post('create')
     @UsePipes(ValidationPipe)
-    createUsers(@Body() createUser: CreateIdoUser) {
-        return this.userService.createUser(createUser);
+    createUsers(@Body() createUser: any) {
+        let timeNow = (new Date().valueOf() / 1000).toString();  //seconds
+        let createUsers: CreateIdoUser = {...createUser, ts: parseInt(timeNow)}
+        return this.userService.createUser(createUsers);
     }
 }

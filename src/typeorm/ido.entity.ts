@@ -9,8 +9,15 @@ export class UserJoinIdo{
     id: number;
 
     @Column({
+    unique: true,
     nullable: false,
     default: '',
     })
     address: string;
+
+    @Column({
+      nullable: false,
+      default: 0,
+    })
+    ts: number;
 }
