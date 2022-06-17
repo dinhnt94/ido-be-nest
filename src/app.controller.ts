@@ -5,10 +5,10 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get(':id')
-  getSignature(@Param() params): string {
-    console.log('getSignature', params.id);
-    return this.appService.getSignature(params.id);
+  @Get(':id/:type')
+  getSignature(@Param() params): string[] {
+    console.log('getSignature', params.id, params.type);
+    return this.appService.getSignature(params.id, params.type);
   }
 
   @Get('check/:id')

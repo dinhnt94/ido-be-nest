@@ -9,14 +9,19 @@ const WhiteListType = {
 
 @Injectable()
 export class AppService {
-  getSignature(userAdd: string): string {
+  getSignature(userAdd: string, typeWhiteList: string): string[] {
     // getClaimming(userAdd, WhiteListType.Community);
     // getTets();
-    const rt = CommMerkleTree.getRootHash();
-    CommMerkleTree.verifyLeaf(rt, userAdd);
+    // const rt = CommMerkleTree.getRootHash();
+    // CommMerkleTree.verifyLeaf(rt, userAdd);
     // CommMerkleTree.getClaimming(userAdd);
     // StakeMerkleTree.getClaimming(userAdd);
-    return 'Hello World!';
+
+    if (typeWhiteList == WhiteListType.Community)
+      return CommMerkleTree.getClaimming(userAdd);
+    if (typeWhiteList == WhiteListType.Stake)
+      return StakeMerkleTree.getClaimming(userAdd);
+    return [''];
   }
 
   getUserInWhiteList(userAdd: string): string {
