@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { getTets, CommMerkleTree, StakeMerkleTree } from "./utils/merkleTree";
+import { CommMerkleTree, StakeMerkleTree } from "./utils/merkleTree";
 import {whiteListComm, whiteListStake } from './utils/whiteList';
 
 const WhiteListType = {
@@ -10,13 +10,6 @@ const WhiteListType = {
 @Injectable()
 export class AppService {
   getSignature(userAdd: string, typeWhiteList: string): string[] {
-    // getClaimming(userAdd, WhiteListType.Community);
-    // getTets();
-    // const rt = CommMerkleTree.getRootHash();
-    // CommMerkleTree.verifyLeaf(rt, userAdd);
-    // CommMerkleTree.getClaimming(userAdd);
-    // StakeMerkleTree.getClaimming(userAdd);
-
     if (typeWhiteList == WhiteListType.Community)
       return CommMerkleTree.getClaimming(userAdd);
     if (typeWhiteList == WhiteListType.Stake)

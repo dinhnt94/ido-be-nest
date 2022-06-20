@@ -7,19 +7,6 @@ const WhiteListType = {
     Stake: 'Stake'
 }
 
-const SHA256 = require('crypto-js/sha256')
-export function getTets() {
-    // const leaves = ['a', 'b', 'c'].map(x => SHA256(x))
-    // const tree = new MerkleTree(leaves, SHA256)
-    // const root = tree.getRoot().toString('hex')
-    // const leaf = SHA256('a')
-    // const proof = tree.getHexProof(leaf)
-    // console.log(proof)
-    // console.log(tree.verify(proof, leaf, root)) // true
-    console.log(keccak256('hello'))
-    console.log(keccak256(Buffer.from('hello')).toString('hex'))
-}
-
 export class MerkleTreeSupport {
 
     private whiteList: Array<string>;

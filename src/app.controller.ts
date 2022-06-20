@@ -7,12 +7,14 @@ export class AppController {
 
   @Get(':id/:type')
   getSignature(@Param() params): string[] {
+    //TODO: remove this log
     console.log('getSignature', params.id, params.type);
     return this.appService.getSignature(params.id, params.type);
   }
 
   @Get('check/:id')
   getUserInWhiteList(@Param() params): string {
+    //TODO: remove this log
     console.log('getUserInWhiteList', params.id);
     return this.appService.getUserInWhiteList(params.id);
   }
