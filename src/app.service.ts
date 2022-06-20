@@ -1,10 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import { AutionIDOInfo, CommunityIDOInfo, StakeIDOInfo } from './utils/config';
 import { CommMerkleTree, StakeMerkleTree } from "./utils/merkleTree";
 import {whiteListComm, whiteListStake } from './utils/whiteList';
 
 const WhiteListType = {
   Community: 'Community',
   Stake: 'Stake'
+}
+
+type GetUserInfo = {
+  name: string,
+  token: string,
+  type: string,
+  timeStart: number,
+  status: boolean
 }
 
 @Injectable()
@@ -17,9 +26,20 @@ export class AppService {
     return [''];
   }
 
-  getUserInWhiteList(userAdd: string): string {
-    if (whiteListComm.includes(userAdd)) return 'Community'
-    if (whiteListStake.includes(userAdd)) return 'Stake'
-    return "No"
+  getUserInWhiteList(userAdd: string): GetUserInfo[] | []{
+    try {
+      let stakeData = StakeIDOInfo;
+      let communityData = CommunityIDOInfo;
+      let autionData = AutionIDOInfo;
+      // console.log(stakeData, communityData, autionData)
+
+      if (whiteListComm.includes(userAdd))
+        communityData.status = true;
+      if (whiteListStake.includes(userAdd))
+        stakeData.status = true;
+      return [stakeData, communityData, autionData]
+    } catch(e) {
+      return []
+    }
   }
 }

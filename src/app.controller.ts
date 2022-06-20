@@ -1,5 +1,13 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Put } from '@nestjs/common';
 import { AppService } from './app.service';
+
+type GetUserInfo = {
+  name: string,
+  token: string,
+  type: string,
+  timeStart: number,
+  status: boolean
+}
 
 @Controller()
 export class AppController {
@@ -12,10 +20,15 @@ export class AppController {
     return this.appService.getSignature(params.id, params.type);
   }
 
-  @Get('check/:id')
-  getUserInWhiteList(@Param() params): string {
+  @Put(':id')
+  getUserInWhiteList(@Param() params): GetUserInfo[] {
     //TODO: remove this log
     console.log('getUserInWhiteList', params.id);
     return this.appService.getUserInWhiteList(params.id);
+  }
+
+  @Get()
+  getDummy(): string {
+    return 'Hello, Dummy!!!';
   }
 }
