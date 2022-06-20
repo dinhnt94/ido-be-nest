@@ -37,6 +37,7 @@ export class AppService {
         communityData.status = true;
       if (whiteListStake.includes(userAdd))
         stakeData.status = true;
+      autionData.status =true;
       return [stakeData, communityData, autionData]
     } catch(e) {
       return []

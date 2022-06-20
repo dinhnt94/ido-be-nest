@@ -13,14 +13,14 @@ type GetUserInfo = {
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get(':id/:type')
+  @Get('hashleaf/:id/:type')
   getSignature(@Param() params): string[] {
     //TODO: remove this log
     console.log('getSignature', params.id, params.type);
     return this.appService.getSignature(params.id, params.type);
   }
 
-  @Put(':id')
+  @Get('check/:id')
   getUserInWhiteList(@Param() params): GetUserInfo[] {
     //TODO: remove this log
     console.log('getUserInWhiteList', params.id);
