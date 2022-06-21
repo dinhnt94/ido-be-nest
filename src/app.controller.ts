@@ -6,7 +6,8 @@ type GetUserInfo = {
   token: string,
   type: string,
   timeStart: number,
-  status: boolean
+  status: boolean,
+  event: number
 }
 
 @Controller()

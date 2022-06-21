@@ -3,7 +3,8 @@ export const StakeIDOInfo = {
     token: 'BOMB',
     type: 'IDO',
     timeStart: 1656619200,
-    status: false
+    status: false,
+    event: 2
 }
 
 export const CommunityIDOInfo = {
@@ -11,7 +12,8 @@ export const CommunityIDOInfo = {
     token: 'BOMB',
     type: 'IDO',
     timeStart: 1656619200,
-    status: false
+    status: false,
+    event: 1
 }
 
 export const AutionIDOInfo = {
@@ -19,5 +21,6 @@ export const AutionIDOInfo = {
     token: 'BOMB',
     type: 'IDO',
     timeStart: 1656619200,
-    status: false
+    status: false,
+    event: 3
 }
