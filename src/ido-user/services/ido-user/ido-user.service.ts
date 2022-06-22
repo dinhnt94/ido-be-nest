@@ -19,7 +19,11 @@ export class IdoUserService {
     return this.userRepository.find();
   }
 
-//   findUsersById(id: number) {
-//     return this.userRepository.findOne(id);
-//   }
+  findUsersById(id: number): Promise<UserJoinIdo> {
+    return this.userRepository.findOneBy({id})
+  }
+
+  findUserByAddress(address: string): Promise<UserJoinIdo>{
+    return this.userRepository.findOneBy({address})
+  }
 }

@@ -20,4 +20,10 @@ export class UserJoinIdo{
       default: 0,
     })
     ts: number;
+
+    @Column({
+      nullable: false,
+      default: '',
+    })
+    typeStake: string
 }

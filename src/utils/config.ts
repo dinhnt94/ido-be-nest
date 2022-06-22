@@ -1,5 +1,5 @@
-export const StakeIDOInfo = {
-    name: "Bombcrypto IDO Stake",
+export const StakeBCOINIDOInfo = {
+    name: "Bombcrypto IDO Stake BCOIN",
     token: 'BOMB',
     type: 'IDO',
     timeStart: 1656619200,
@@ -23,4 +23,13 @@ export const AutionIDOInfo = {
     timeStart: 1656619200,
     status: false,
     event: 3
+}
+
+export const StakeSENIDOInfo = {
+    name: "Bombcrypto IDO Stake SEN",
+    token: 'BOMB',
+    type: 'IDO',
+    timeStart: 1656619200,
+    status: false,
+    event: 4
 }

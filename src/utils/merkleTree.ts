@@ -1,10 +1,11 @@
 import { MerkleTree } from 'merkletreejs';
-import {whiteListComm, whiteListStake } from './whiteList';
+import {whiteListComm, whiteListBCOINStake, whiteListSENStake } from './whiteList';
 const keccak256 = require('keccak256');
 
 const WhiteListType = {
     Community: 'Community',
-    Stake: 'Stake'
+    StakeBcoin: 'StakeBcoin',
+    StakeSen: 'StakeSen'
 }
 
 export class MerkleTreeSupport {
@@ -14,7 +15,9 @@ export class MerkleTreeSupport {
     private merkleTree: MerkleTree;
 
     constructor(typeWhiteList: string) {
-        this.whiteList = (typeWhiteList == WhiteListType.Community) ? whiteListComm : whiteListStake;
+        if(typeWhiteList == WhiteListType.Community) this.whiteList = whiteListComm;
+        if(typeWhiteList == WhiteListType.StakeBcoin) this.whiteList = whiteListBCOINStake;
+        if(typeWhiteList == WhiteListType.StakeSen) this.whiteList = whiteListSENStake;
         this.leafNodes = this.whiteList.map(addr => keccak256(addr));
         this.merkleTree = new MerkleTree(this.leafNodes, keccak256, { sortPairs: true});
     }
@@ -68,4 +71,5 @@ export class MerkleTreeSupport {
 
 // export 2 const as 2 type of whitelist
 export const CommMerkleTree = new MerkleTreeSupport(WhiteListType.Community);
-export const StakeMerkleTree = new MerkleTreeSupport(WhiteListType.Stake);
+export const StakeBCOINMerkleTree = new MerkleTreeSupport(WhiteListType.StakeBcoin);
+export const StakeSENMerkleTree = new MerkleTreeSupport(WhiteListType.StakeSen)

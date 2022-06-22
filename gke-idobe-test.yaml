@@ -46,7 +46,7 @@ spec:
           requests:
             cpu: 10m
             ephemeral-storage: 10Mi
-            memory: 10Mi
+            memory: 30Mi
 ---
 apiVersion: v1
 kind: Service
@@ -67,4 +67,4 @@ spec:
     targetPort: 3000
   selector:
     app: idobe
-  type: LoadBalancer
+  type: ClusterIP
