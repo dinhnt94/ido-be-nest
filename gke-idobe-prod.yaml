@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idobe
+  namespace: bsc-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: idobe
+  template:
+    metadata:
+      labels:
+        app: idobe
+    spec:
+      serviceAccountName: ksa-sql-client
+      containers:
+      - image: asia-docker.pkg.dev/bombcrypto/api-test/idobe
+        name: idobe
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 10m
+            ephemeral-storage: 10Mi
+            memory: 20Mi
+        env:
+        - name: POSTGRES_HOST
+          value: '127.0.0.1'
+        - name: POSTGRES_PORT
+          value: '5432'
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: '123456'
+        - name: POSTGRES_DB
+          value: postgres
+      - name: cloud-sql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.31.0
+        command:
+        - /cloud_sql_proxy
+        - -instances=bombcrypto:asia-southeast1:sql-ido-test=tcp:0.0.0.0:5432
+        securityContext:
+          runAsNonRoot: true
+        resources:
+          requests:
+            cpu: 10m
+            ephemeral-storage: 10Mi
+            memory: 30Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: idobe
+  namespace: bsc-prod
+  annotations:
+    cloud.google.com/neg: '
+      {
+        "exposed_ports": {
+          "80": {}
+        }
+      }
+    '
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: idobe
+  type: ClusterIP

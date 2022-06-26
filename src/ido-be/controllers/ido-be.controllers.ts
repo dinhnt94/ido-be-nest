@@ -6,14 +6,16 @@ type GetUserInfo = {
   name: string;
   token: string;
   type: string;
-  timeStart: number;
+  timeStartIDO: Array<number>,
+  timeWhileList: Array<number>,
+  timeClaimIDO: number,
   status: boolean;
   event: number;
 };
 
 @Controller('idobe')
 export class IdoBeController {
-  constructor(private readonly idoBeService: IdoBeService) {}
+  constructor(private readonly idoBeService: IdoBeService) { }
 
   @Get('hashleaf/:id/:type')
   getSignature(@Param() params): string[] {
@@ -28,9 +30,5 @@ export class IdoBeController {
     console.log('getUserInWhiteList', params.id);
     return this.idoBeService.getUserInWhiteList(params.id);
   }
-  
-  // @Get('past-event')
-  // async getPastEvent(){
-  //   // return await this.appService.getPastEvent();
-  // }
+
 }

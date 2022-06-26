@@ -26,14 +26,16 @@ type GetUserInfo = {
   name: string;
   token: string;
   type: string;
-  timeStart: number;
+  timeStartIDO: Array<number>,
+  timeWhileList: Array<number>,
+  timeClaimIDO: number,
   status: boolean;
   event: number;
 };
 
 @Injectable()
 export class IdoBeService {
-  constructor() {}
+  constructor() { }
 
   getSignature(userAdd: string, typeWhiteList: string): string[] {
     if (typeWhiteList == WhiteListType.Community)
