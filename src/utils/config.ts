@@ -1,5 +1,5 @@
 export const StakeBCOINIDOInfo = {
-    name: "Bombcrypto IDO Stake BCOIN",
+    name: "Community Round : Random users",
     token: 'BOMB',
     type: 'IDO',
     timeStartIDO: [1656383736, 1656441431],
@@ -10,7 +10,7 @@ export const StakeBCOINIDOInfo = {
 }
 
 export const CommunityIDOInfo = {
-    name: "Bombcrypto IDO Community",
+    name: "Guaranteed Round: Stake BCOIN",
     token: 'BOMB',
     type: 'IDO',
     timeStartIDO: [1656383736, 1656441431],
@@ -21,7 +21,7 @@ export const CommunityIDOInfo = {
 }
 
 export const AutionIDOInfo = {
-    name: "Bombcrypto IDO Aution",
+    name: "Guaranteed Round: Stake SEN",
     token: 'BOMB',
     type: 'IDO',
     timeStartIDO: [1656383736, 1656441431],
@@ -32,7 +32,7 @@ export const AutionIDOInfo = {
 }
 
 export const StakeSENIDOInfo = {
-    name: "Bombcrypto IDO Stake SEN",
+    name: "Presale BOMB Token Event",
     token: 'BOMB',
     type: 'IDO',
     timeStartIDO: [1656383736, 1656441431],
