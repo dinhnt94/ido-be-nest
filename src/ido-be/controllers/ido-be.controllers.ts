@@ -7,7 +7,7 @@ type GetUserInfo = {
   token: string;
   type: string;
   timeStartIDO: Array<number>,
-  timeWhileList: Array<number>,
+  timeWhiteList: Array<number>,
   timeClaimIDO: number,
   status: boolean;
   event: number;

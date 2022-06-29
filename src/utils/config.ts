@@ -3,7 +3,7 @@ export const StakeBCOINIDOInfo = {
     token: 'BOMB',
     type: 'IDO',
     timeStartIDO: [1656497394, 1656500400],
-    timeWhileList: [1656500400, 1656502200],
+    timeWhiteList: [1656500400, 1656502200],
     timeClaimIDO: 1656415800,
     status: false,
     event: 2
@@ -14,7 +14,7 @@ export const CommunityIDOInfo = {
     token: 'BOMB',
     type: 'IDO',
     timeStartIDO: [1656497394, 1656500400],
-    timeWhileList: [1656500400, 1656502200],
+    timeWhiteList: [1656500400, 1656502200],
     timeClaimIDO: 1656415800,
     status: false,
     event: 1
@@ -25,7 +25,7 @@ export const AutionIDOInfo = {
     token: 'BOMB',
     type: 'IDO',
     timeStartIDO: [1656497394, 1656500400],
-    timeWhileList: [1656500400, 1656502200],
+    timeWhiteList: [1656500400, 1656502200],
     timeClaimIDO: 1656415800,
     status: false,
     event: 3
@@ -36,7 +36,7 @@ export const StakeSENIDOInfo = {
     token: 'BOMB',
     type: 'IDO',
     timeStartIDO: [1656497394, 1656500400],
-    timeWhileList: [1656500400, 1656502200],
+    timeWhiteList: [1656500400, 1656502200],
     timeClaimIDO: 1656415800,
     status: false,
     event: 4
