@@ -51,10 +51,10 @@ export class IdoBeService {
 
   getUserInWhiteList(userAdd: string): GetUserInfo[] | [] {
     try {
-      let stakeBcoinData = StakeBCOINIDOInfo;
-      let stakeSenData = StakeSENIDOInfo;
-      let communityData = CommunityIDOInfo;
-      let autionData = AutionIDOInfo;
+      let stakeBcoinData = {...StakeBCOINIDOInfo};
+      let stakeSenData = {...StakeSENIDOInfo};
+      let communityData = {...CommunityIDOInfo};
+      let autionData = {...AutionIDOInfo};
 
       if (whiteListComm.includes(userAdd)) communityData.status = true;
       if (whiteListBCOINStake.includes(userAdd)) stakeBcoinData.status = true;
