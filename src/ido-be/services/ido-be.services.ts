@@ -66,10 +66,18 @@ export class IdoBeService {
     }
   }
 
-  // getPastEvent(): Object {
+  getRootHash(type: string): string {
+    switch (type) {
+      case "Community":
+        return CommMerkleTree.getRootHash();
+      case "StakeBcoin":
+        return StakeBCOINMerkleTree.getRootHash();
+      case "StakeSen":
+        return StakeSENMerkleTree.getRootHash();
+      default:
+        return "Type is not correct";
+    }
 
-  //   return {
+  }
 
-  //   }
-  // }
 }

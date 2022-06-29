@@ -31,4 +31,9 @@ export class IdoBeController {
     return this.idoBeService.getUserInWhiteList(params.id);
   }
 
+  @Get('rootPath/:type')
+  getRootHash(@Param() params): string {
+    return this.idoBeService.getRootHash(params.type);
+  }
+
 }
