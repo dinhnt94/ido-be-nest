@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: idobe
-  namespace: bsc-test
+  namespace: bsc-prod
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       serviceAccountName: ksa-sql-client
       containers:
-      - image: asia-docker.pkg.dev/bombcrypto/api-test/idobe
+      - image: asia-docker.pkg.dev/bombcrypto/api-prod/idobe
         name: idobe
         ports:
         - containerPort: 8080
@@ -32,14 +32,18 @@ spec:
         - name: POSTGRES_USER
           value: postgres
         - name: POSTGRES_PASSWORD
-          value: '123456'
+          valueFrom:
+            secretKeyRef:
+              name: idobe-config
+              key: sql_password
+              optional: false
         - name: POSTGRES_DB
           value: postgres
       - name: cloud-sql-proxy
         image: gcr.io/cloudsql-docker/gce-proxy:1.31.0
         command:
         - /cloud_sql_proxy
-        - -instances=bombcrypto:asia-southeast1:sql-ido-test=tcp:0.0.0.0:5432
+        - -instances=bombcrypto:asia-southeast1:sql-ido-prod-=tcp:0.0.0.0:5432
         securityContext:
           runAsNonRoot: true
         resources:
@@ -52,7 +56,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: idobe
-  namespace: bsc-test
+  namespace: bsc-prod
   annotations:
     cloud.google.com/neg: '
       {

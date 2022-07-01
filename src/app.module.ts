@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import {TypeOrmModule} from '@nestjs/typeorm';
 import { IdoUserModule } from './ido-user/ido-user.module';
 import entities from './typeorm';
+import { IdoBeModule } from './ido-be/ido-be.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import entities from './typeorm';
       inject: [ConfigService],
     }),
     IdoUserModule,
+    IdoBeModule
   ],
   controllers: [AppController],
   providers: [AppService],
